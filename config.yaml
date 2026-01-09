@@ -1,0 +1,65 @@
+# 服务器端口
+port: 8317
+# 凭证存储目录（Docker中保持默认即可）
+auth-dir: '~/.cli-proxy-api'
+# 请求重试次数
+request-retry: 3
+# 配额超限行为
+quota-exceeded:
+  switch-project: true # 配额超限时自动切换项目
+  switch-preview-model: true # 配额超限时自动切换预览模型
+# API密钥 - 用于客户端访问代理（自己设置，任意字符串）
+api-keys:
+  - 'sk-mysecretpassword123'
+# Web管理面板设置
+remote-management:
+  allow-remote: true # 允许远程访问管理界面
+  secret-key: '$2a$10$24oPDlvJmxHKbGzpabggk.m8HrKUqdGJISnrOaY6h.X8MjYrN6EcK' # 管理密钥（重新设置为明文，启动后会自动加密）
+  disable-control-panel: false # 启用Web管理面板
+# 启用调试日志（可选）
+debug: true
+# 日志写入文件
+logging-to-file: true
+# 启用使用统计
+usage-statistics-enabled: true
+proxy-url: ''
+request-log: false
+tls:
+  enable: false
+  cert: ''
+  key: ''
+disable-cooling: false
+max-retry-interval: 0
+ws-auth: false
+ampcode:
+  upstream-url: https://ampcode.com
+  upstream-api-key: ''
+  restrict-management-to-localhost: true
+  model-mappings: []
+payload:
+  default: []
+  override: []
+# ============ 以下是各种API Key配置示例（取消注释并填入你的key） ============
+
+# Gemini API Key（如果你有AI Studio的API Key）
+#gemini-api-key:
+#  - api-key: "AIzaSy..."
+#  - api-key: "AIzaSy..."  # 多个key自动轮询
+
+# Claude API Key（如果你有官方API Key）
+#claude-api-key:
+#  - api-key: "sk-ant-..."
+
+# Codex/OpenAI API Key - 确保启用
+codex-api-key:
+  - api-key: 'dummy-key'
+    base-url: 'https://api.openai.com'
+# OpenAI兼容提供商（如OpenRouter）
+#openai-compatibility:
+#  - name: "openrouter"
+#    base-url: "https://openrouter.ai/api/v1"
+#    api-key-entries:
+#      - api-key: "sk-or-v1-..."
+#    models:
+#      - name: "anthropic/claude-3.5-sonnet"
+#        alias: "claude-3.5-sonnet"
